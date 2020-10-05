@@ -52,8 +52,8 @@
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   };
 
-  class Product{
-    constructor(id, data){
+  class Product {
+    constructor(id, data) {
       const thisProduct = this;
 
       thisProduct.id = id;
@@ -65,7 +65,7 @@
       console.log('new Product:', thisProduct);
     }
 
-    renderInMenu(){
+    renderInMenu() {
       const thisProduct = this;
 
       /* generate HTML based on template *//* generuj HTML na podstawie szablonu */
@@ -78,7 +78,7 @@
       menuContainer.appendChild(thisProduct.element);
     }
 
-    getElements(){
+    getElements() {
       const thisProduct = this;
 
       thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
@@ -86,45 +86,47 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+      thisProduct.
     }
 
-    initAccordion(){
+    initAccordion() {
       const thisProduct = this;
 
-    /* find the clickable trigger (the element that should react to clicking) */
+      /* find the clickable trigger (the element that should react to clicking) */
 
-    /* START: click event listener to trigger */
-      thisProduct.accordionTrigger.addEventListener('click', function(){
-      console.log('clicked');
-      /* prevent default action for event */
-      event.preventDefault();
-      /* toggle active class on element of thisProduct */
-      thisProduct.element.classList.toggle('active');
-      /* find all active products */
-      const allActiveProducts = document.querySelectorAll('article.active');
-      /* START LOOP: for each active product */
-      for(let activeProduct of allActiveProducts ){
-        /* START: if the active product isn't the element of thisProduct */
-        if(activeProduct !== thisProduct.element){
-          /* remove class active for the active product */
-          activeProduct.classList.remove('active');
-        /* END: if the active product isn't the element of thisProduct */
-        }
-      /* END LOOP: for each active product */
-    };
-    /* END: click event listener to trigger */
-    }
+      /* START: click event listener to trigger */
+      thisProduct.accordionTrigger.addEventListener('click', function () {
+        console.log('clicked');
+        /* prevent default action for event */
+        event.preventDefault();
+        /* toggle active class on element of thisProduct */
+        thisProduct.element.classList.toggle('active');
+        /* find all active products */
+        const allActiveProducts = document.querySelectorAll('article.active');
+        /* START LOOP: for each active product */
+        for (let activeProduct of allActiveProducts) {
+          /* START: if the active product isn't the element of thisProduct */
+          if (activeProduct !== thisProduct.element) {
+            /* remove class active for the active product */
+            activeProduct.classList.remove('active');
+            /* END: if the active product isn't the element of thisProduct */
+          }
+          /* END LOOP: for each active product */
+        };
+        /* END: click event listener to trigger */
+      }
 
     initOrderForm(){
-      const thisProduct = this;
-      console.log(this.initOrderFrom);
+        const thisProduct = this;
+        console.log(this.initOrderFrom);
 
-      thisProduct.form.addEventListener('submit', function(event){
-        event.preventDefault();
-        thisProduct.processOrder();
-      });
+        thisProduct.form.addEventListener('submit', function(event){
+          event.preventDefault();
+          thisProduct.processOrder();
+        });
 
-      for(let input of thisProduct.formInputs){
+        for(let input of thisProduct.formInputs){
         input.addEventListener('change', function(){
           thisProduct.processOrder();
         });
@@ -137,75 +139,100 @@
       });
     }
 
-  processOrder(){
-    const thisProduct = this;
-/* read all data from the form (using utils.serializeFormToObject) and save it to const formData */
-const formData = utils.serializeFormToObject(thisProduct.form);
-console.log('formDaya', formData);
+    processOrder() {
+      const thisProduct = this;
+      /* read all data from the form (using utils.serializeFormToObject) and save it to const formData */
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      console.log('formDaya', formData);
 
-thisProduct.params = {};
+      thisProduct.params = {};
 
-  /* set variable price to equal thisProduct.data.price */
-  let price = thisProduct.data.price;
-  console.log(price);
-  /* START LOOP: for each paramId in thisProduct.data.params */
-  for(let paramId in thisProduct.data.params) {
-  console.log('param:',param);
-    /* save the element in thisProduct.data.params with key paramId as const param */
-  const param = thisProduct.data.params[paramId];
-    /* START LOOP: for each optionId in param.options */
-    for(let optionId in param.options){
-      /* save the element in param.options with key optionId as const option */
-    const option = param.options[optionId];
-    const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
-      /* START IF: if option is selected and option is not default */
-    if(optionSelected && !option.default){
-        /* add price of option to variable price */
-        price += option.price;
+      /* set variable price to equal thisProduct.data.price */
+      let price = thisProduct.data.price;
+      console.log(price);
+      /* START LOOP: for each paramId in thisProduct.data.params */
+      for(let paramId in thisProduct.data.params) {
+        console.log('param:', param);
+        /* save the element in thisProduct.data.params with key paramId as const param */
+        const param = thisProduct.data.params[paramId];
+        /* START LOOP: for each optionId in param.options */
+        for(let optionId in param.options) {
+          /* save the element in param.options with key optionId as const option */
+          const option = param.options[optionId];
+          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
+          /* START IF: if option is selected and option is not default */
+          if (optionSelected && !option.default) {
+            /* add price of option to variable price */
+            price += option.price;
+          }
+
+          const optionImages = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
+          console.log('IMAGES:', optionImages);
+
+          if(optionSelected){
+            if(!thisProduct.params[paramId]){
+
+              thisProduct.params[paramId] = {
+                label: param.label,
+                options: {},
+              }
+            }
+            thisProduct.params[paramId].option[optionId] = option.label;
+
+            for(let images of optionImages) {
+              images.classList.add(classNames.menuProduct.imageVisible);
+            }
+          }
+
+          else {
+            if(let images of optionImages) {
+              images.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          }
+
+          /* END IF: if option is selected and option is not default */
+          /* START ELSE IF: if option is not selected and option is default */
+          /* deduct price of option from price */
+          price -= option.price;
+          /* END ELSE IF: if option is not selected and option is default */
+        }
+        /* END LOOP: for each optionId in param.options */
       }
-      /* END IF: if option is selected and option is not default */
-      /* START ELSE IF: if option is not selected and option is default */
-        /* deduct price of option from price */
-        price -= option.price;
-      /* END ELSE IF: if option is not selected and option is default */
+      /* END LOOP: for each paramId in thisProduct.data.params */
     }
-    /* END LOOP: for each optionId in param.options */
+    /* set the contents of thisProduct.priceElem to be the value of variable price */
+    thisProduct.priceElem.innerHTML = thisProduct.price;
+    console.log(thisProduct.params);
   }
-  /* END LOOP: for each paramId in thisProduct.data.params */
-  }
-  /* set the contents of thisProduct.priceElem to be the value of variable price */
-  thisProduct.priceElem.innerHTML = thisProduct.price;
-      console.log(thisProduct.params);
 }
-  }
 
-    const app = {
-    initMenu: function(){
-      const testProduct = new Product();
-      console.log('testProduct:', testProduct);
-    },
-
-    initData: function(){
-      const thisApp = this;
-
-      console.log('thisApp.data:', thisApp.data);
-
-      for(let productData in thisApp.data.products){
-        new Product(productData, thisApp.products[productData]);
-      }
-    },
-
-    init: function(){
-      const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
-
-      thisApp.initData();
-      thisApp.initMenu();
-    },
+const app = {
+  initMenu: function () {
+    const testProduct = new Product();
+    console.log('testProduct:', testProduct);
   },
+
+  initData: function () {
+    const thisApp = this;
+
+    console.log('thisApp.data:', thisApp.data);
+
+    for (let productData in thisApp.data.products) {
+      new Product(productData, thisApp.products[productData]);
+    }
+  },
+
+  init: function () {
+    const thisApp = this;
+    console.log('*** App starting ***');
+    console.log('thisApp:', thisApp);
+    console.log('classNames:', classNames);
+    console.log('settings:', settings);
+    console.log('templates:', templates);
+
+    thisApp.initData();
+    thisApp.initMenu();
+  },
+},
   app.init();
 }
