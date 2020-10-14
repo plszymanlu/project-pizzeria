@@ -325,7 +325,7 @@
     }
   }
 
-  class Card {
+  class Cart {
     constructor(element) {
       const thisCart = this;
 
@@ -342,9 +342,9 @@
     initActions() {
       const thisCart = this;
 
-      thisCart.dom.toggleTrigger.addEventListener('click', function) {
+      thisCart.dom.toggleTrigger.addEventListener('click', function() {
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapper);
-      }
+      });
 
       thisCart.dom.productList.addEventListener('updated', function () {
         thisCart.update();
@@ -358,6 +358,7 @@
         event.preventDefault();
         thisCart.sendOrder();
       });
+
     }
 
     update() {
@@ -438,7 +439,7 @@
 
   class CartProduct {
     constructor(menuProduct, element) {
-      const thisProduct = this;
+      const thisCartProduct = this;
 
       thisCartProduct.id = menuProduct.id;
       thisCartProduct.name = menuProduct.name;
@@ -485,7 +486,7 @@
 
     }
 
-    remove(){
+    remove() {
       const thisCartProduct = this;
 
       const event = new CustomEvent('remove', {
@@ -498,15 +499,6 @@
       thisCartProduct.dom.wrapper.dispatchEvent(event);
     }
 
-    getElements(element) {
-      const thisCart = this;
-
-      thisCart.dom = {};
-      thisCart.dom.wrapper = element;
-
-      thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
-      thisCart.dom.productList = document.querySelector(select.cart.productList);
-    }
   }
 
   const app = {
@@ -540,7 +532,7 @@
       const thisApp = this;
 
       const cartElem = document.querySelector(select.containerOf.cart);
-      thisApp.cart = new Cart(caretElem);
+      thisApp.cart = new Cart(cartElem);
     },
 
   };
