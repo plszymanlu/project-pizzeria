@@ -124,7 +124,7 @@
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
       thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
-      thisProduct.thisCart.dom.toggleTrigger = thisProduct.querySelector(select.cart.toggleTrigger);
+      thisProduct.toggleTrigger = thisProduct.querySelector(select.toggleTrigger);
     }
 
     initAccordion() {
