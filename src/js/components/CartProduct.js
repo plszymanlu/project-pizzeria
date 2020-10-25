@@ -1,9 +1,7 @@
-import {select} from '../settings.js';
+import { select } from '../settings.js';
 import AmountWidget from './AmountWidget.js';
 
-export class CartProduc = {};
-
-class CartProduct {
+export class CartProduct {
   constructor(menuProduct, element) {
     const thisCartProduct = this;
 
@@ -61,7 +59,10 @@ class CartProduct {
       priceSingle: thisCartProduct.priceSingle,
       amount: thisCartProduct.amount,
       params: thisCartProduct.params,
-    }
+    };
+
+    return productData;
+
   }
 
   remove() {

@@ -1,10 +1,8 @@
-import {Product} from './components/Product.js';
-import {Cart} from './components/Cart.js';
-import {select, settings, classNames, templates} from './settings.js';
+import {select, classNames, templates} from '../settings.js';
+import AmountWidget from './AmountWidget.js';
+import {utils} from '../utils.js';
 
-export class Product = {};
-
-class Product {
+export class Product {
   constructor(id, data) {
     const thisProduct = this;
 
