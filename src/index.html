@@ -5,14 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Pizzeria</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
     rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_orange.css">
   <link rel="stylesheet" href="./vendor/range-slider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+  <title>Pizzeria</title>
 </head>
 
 <body>
@@ -21,52 +24,184 @@
     <div class="container">
       <div class="header__wrapper">
         <div class="logo">
-          <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
-          <h2 class="logo__subtitle">the best homemade Italian food</h2>
+          <h1 class="logo__title"><span>Italiana Ristorante</span>Pizzeria</h1>
+          <h2 class="logo__subtitle">all you need</h2>
         </div>
         <div class="main-nav">
+          <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
-        <div id="cart" class="cart">
-          <div class="cart__summary">
-            <span class="cart__total-number">0</span>
-            <span class="cart__total-price">Total price: $<strong>0</strong></span>
-            <i class="fas fa-chevron-down"></i>
-            <i class="fas fa-shopping-cart cart__icon"></i>
-          </div>
-          <div class="cart__content">
-            <form class="cart__order">
-              <ul class="cart__order-summary no-spacing">
-              </ul>
-              <ul class="cart__order-price">
-                <li class="cart__order-subtotal">
-                  <span class="cart__order-price-name">Subtotal:</span>
-                  <span class="cart__order-price-sum">$<strong>0</strong></span>
-                </li>
-                <li class="cart__order-delivery">
-                  <span class="cart__order-price-name">Delivery:</span>
-                  <span class="cart__order-price-sum">$<strong>0</strong></span>
-                </li>
-                <li class="cart__order-total">
-                  <span class="cart__order-price-name"><strong>Total:</strong></span>
-                  <span class="cart__order-price-sum">$<strong>0</strong></span>
-                </li>
-              </ul>
-              <div class="cart__order-confirmation">
-                <input type="tel" name="phone" placeholder="Your phone">
-                <input type="text" name="address" placeholder="Your address">
-                <button type="submit" class="btn-secondary">Order</button>
-              </div>
-            </form>
-          </div>
-        </div>
+
       </div>
     </div>
   </header>
 
   <div id="pages">
+    <section id="main" class="active">
+      <div class="page-wrapper container">
+        <div class="nav-box">
+          <div class="link-box">
+            <img src="https://s6.ifotos.pl/img/pizza-1jp_qsqarxs.jpg" alt="order">
+            <div class="link-box-details">
+              <a href="#order">Order online</a>
+              <p>Delicious food delivered to your home</p>
+            </div>
+          </div>
+          <div class="link-box">
+            <img src="https://s6.ifotos.pl/img/pizza-2jp_qsqarxa.jpg" alt="book">
+            <div class="link-box-details">
+              <a href="#booking">Book a table</a>
+              <p>Don't wait for free table</p>
+            </div>
+          </div>
+          <div class="open-hours">
+            <p>Opening hours:</p>
+            <p>Tue-Sun 12pm-12am</p>
+          </div>
+        </div>
+
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="carousel-picture">
+                <img
+                  src="https://images.pexels.com/photos/2130134/pexels-photo-2130134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                  alt="breakfast">
+              </div>
+              <div class="carousel-caption">
+                <h2>Delicious breakfast</h2>
+                <p>ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+                <span>- Emily Rose</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-picture">
+                <img
+                  src="https://images.pexels.com/photos/6267/menu-restaurant-vintage-table.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                  alt="restaurant">
+              </div>
+              <div class="carousel-caption">
+                <h2>Cozy place</h2>
+                <p>sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
+                  est, qui dolorem ipsum quia dolor sit amet, consectetur</p>
+                <span>- Andre Franklin</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-picture">
+                <img src="https://s6.ifotos.pl/img/pizza-3jp_qsqanxr.jpg" alt="pizza">
+              </div>
+              <div class="carousel-caption">
+                <h2>Amazing service</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                  et dolore magna aliqua. Ut enim ad minim veniam</p>
+                <span>- Margaret Osborne</span>
+              </div>
+            </div>
+          </div>
+
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <div class="gallery">
+          <div class="gallery-photo">
+            <img src="https://s6.ifotos.pl/img/pizza-4jp_qsqanwx.jpg" alt="dish">
+            <div class="gallery-links">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <div class="gallery-photo">
+            <img src="https://s6.ifotos.pl/img/pizza-5jp_qsqanwn.jpg" alt="meal">
+            <div class="gallery-links">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <div class="gallery-photo">
+            <img src="https://s6.ifotos.pl/img/pizza-6jp_qsqanwe.jpg" alt="slices">
+            <div class="gallery-links">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <div class="gallery-photo">
+            <img src="https://s6.ifotos.pl/img/pizza-7jp_qsqanww.jpg" alt="open">
+            <div class="gallery-links">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <div class="gallery-photo">
+            <img src="https://s6.ifotos.pl/img/pizza-8jp_qsqanwa.jpg" alt="cook">
+            <div class="gallery-links">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <div class="gallery-photo">
+            <img src="https://s6.ifotos.pl/img/pizza-9jp_qsqanwq.jpg" alt="door">
+            <div class="gallery-links">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <a href='https://www.instagram.com/?hl=pl'>View more on Instagram</a>
+        </div>
+      </div>
+    </section>
+
+
+
+
     <section id="order">
+      <div id="cart" class="cart">
+        <div class="cart__summary">
+          <span class="cart__total-number">0</span>
+          <span class="cart__total-price">Total price: $<strong>0</strong></span>
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-shopping-cart cart__icon"></i>
+        </div>
+        <div class="cart__content">
+          <form class="cart__order">
+            <ul class="cart__order-summary no-spacing">
+            </ul>
+            <ul class="cart__order-price">
+              <li class="cart__order-subtotal">
+                <span class="cart__order-price-name">Subtotal:</span>
+                <span class="cart__order-price-sum">$<strong>0</strong></span>
+              </li>
+              <li class="cart__order-delivery">
+                <span class="cart__order-price-name">Delivery:</span>
+                <span class="cart__order-price-sum">$<strong>0</strong></span>
+              </li>
+              <li class="cart__order-total">
+                <span class="cart__order-price-name"><strong>Total:</strong></span>
+                <span class="cart__order-price-sum">$<strong>0</strong></span>
+              </li>
+            </ul>
+            <div class="cart__order-confirmation">
+              <input type="tel" name="phone" placeholder="Your phone">
+              <input type="text" name="address" placeholder="Your address">
+              <button type="submit" class="btn-secondary">Order</button>
+            </div>
+          </form>
+        </div>
+      </div>
       <div id="product-list" class="product-list container"></div>
     </section>
     <section id="booking">
@@ -246,11 +381,18 @@
 
     </article> <!-- .product -->
   </script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
-
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
   <script src="js/app.js" type="module"></script>
 </body>
 
