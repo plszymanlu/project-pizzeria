@@ -7,9 +7,9 @@ export class AmountWidget extends BaseWidget {
 
     const thisWidget = this;
 
-    thisWidget.getElements(element);
+    thisWidget.getElements();
     // thisWidget.value = settings.amountWidget.defaultValue;
-    thisWidget.setValue(thisWidget.input.value);
+    thisWidget.value = thisWidget.dom.input.value;
     thisWidget.initActions();
 
     // console.log('AmountWidget:', thisWidget);
@@ -49,7 +49,7 @@ export class AmountWidget extends BaseWidget {
   renderValue() {
     const thisWidget = this;
 
-    thisWidget.dom.imput.value = thisWidget.value;
+    thisWidget.dom.input.value = thisWidget.value;
   }
 
 }

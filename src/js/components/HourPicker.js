@@ -1,8 +1,8 @@
 // pluginu slider //
 
-import BaseWidget from './BaseWidget.js';
+import {BaseWidget} from './BaseWidget.js';
 import { settings, select } from '../settings.js';
-import utils from '../utils.js';
+import {utils} from '../utils.js';
 
 export class HourPicker extends BaseWidget {
   constructor(wrapper) {
@@ -25,7 +25,7 @@ export class HourPicker extends BaseWidget {
     });
   }
 
-  parseValue() {
+  parseValue(newValue) {
     return utils.numebtToHours(newValue);
   }
 

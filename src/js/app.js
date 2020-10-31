@@ -34,6 +34,7 @@ const app = {
         // const clickedElement = this;
         event.preventDefault();
         /* TODO: get page id from href */
+        const clickedElement = this;
         const id = clickedElement.getAttribute('href').replace('#', '');
         /* TODO: activate page */
         thisApp.activatePage(id);

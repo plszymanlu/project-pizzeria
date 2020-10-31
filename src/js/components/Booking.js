@@ -1,7 +1,8 @@
 import { templates, select, settings, classNames } from '../settings.js';
-// import utils from '../utils.js';
-import AmountWidget from './AmountWidget.js';
+import { utils } from '../utils.js';
+import { AmountWidget } from './AmountWidget.js';
 import { DatePicker } from './DatePicker.js';
+import { HourPicker } from './HourPicker.js';
 
 export class Booking {
   constructor(element) {
@@ -31,7 +32,7 @@ export class Booking {
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
-    thisBooking.hourPicker = new hoursAmount(thisBooking.dom.hourPicker);
+    thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
   }
 
   getData() {
@@ -87,7 +88,6 @@ export class Booking {
     }
 
     for (let event of bookings) {
-      console.log(eventBookings);
       thisBooking.makeBooked(event.date, event.hour, event.duration, event.table);
       console.log(bookings);
     }
@@ -95,11 +95,11 @@ export class Booking {
     const minDate = thisBooking.datePicker.minDate;
     const maxDate = thisBooking.datePicker.maxDate;
 
-    for (let reapetEvent of eventsRepeat) {
+    for (let repetEvent of eventsRepeat) {
       if (PaymentRequestUpdateEvent.repeat == 'daily') {
         for (let dateDaily = minDate; dateDaily <= maxDate; dateDaily = utils.addDays(dateDaily, 1)) {
-          thisBooking.makeBooked(utils.dateToStr(dateDaily), repeatEvent.hour, repeatEvent.duration, repetEvent.table);
-          console.log(repeatEvent);
+          thisBooking.makeBooked(utils.dateToStr(dateDaily), repetEvent.hour, repetEvent.duration, repetEvent.table);
+          console.log(repetEvent);
         }
       }
     }

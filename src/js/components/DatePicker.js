@@ -1,8 +1,8 @@
 // plugin flatpickr //
 
-import { select } from '../settings.js';
-import BaseWidget from './BaseWidget.js';
+import { BaseWidget } from './BaseWidget.js';
 import {settings, select} from '../settings.js';
+import {utils} from '../utils.js';
 
 export class DatePicker extends BaseWidget {
   constructor(wrapper){
@@ -21,7 +21,7 @@ export class DatePicker extends BaseWidget {
     thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture);
     console.log(thisWidget.value);
 
-    flatpckr(thisWidget.dom.input, {
+    flatpickr(thisWidget.dom.input, {
       deflaultDate: thisWidget.minDate,
       minDate: thisWidget.minDate,
       maxDate: thisWidget.maxDate,

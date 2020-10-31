@@ -30,19 +30,27 @@
     "license": "ISC",
     "dependencies": {
         "json-server": "^0.16.2",
-        "node": "^14.13.1"
+        "node": "^14.13.1",
+        "react-redux": "^7.0.1",
+        "redux": "^4.0.1",
+        "shortid": "^2.2.16"
     },
     "devDependencies": {
         "autoprefixer-cli": "^1.0.0",
+        "babel-eslint": "^10.1.0",
         "browser-sync": "^2.26.3",
         "copyfiles": "^2.1.0",
-        "eslint": "^5.14.1",
+        "eslint": "^5.16.0",
+        "eslint-plugin-react": "^7.21.5",
         "globstar": "^1.0.0",
+        "husky": "^4.3.0",
+        "lint-staged": "^10.5.0",
         "mkdirp": "^0.5.1",
         "node-sass": "^4.11.0",
         "npm-run-all": "^4.1.5",
         "nu-html-checker": "^0.1.0",
         "onchange": "^5.2.0",
+        "redux-devtools-extension": "^2.13.8",
         "stylelint": "^9.10.1",
         "stylelint-scss": "^3.5.4"
     }
